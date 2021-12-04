@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Fylo data storage component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+      :root {
+        /* Primany color */
+        --gradient: hsl(6, 100%, 80%) to hsl(335, 100%, 65%);
+
+        /* Neutral color */
+        --pale-blue: hsl(243, 100%, 93%);
+        --grayish-blue: hsl(229, 7%, 55%);
+        --dark-blue: hsl(228, 56%, 26%);
+        --very-dark-blue: hsl(229, 57%, 11%);
+
+        --border-radius: 10px;
+
+        /* font weight */
+        --fw-reg: 400;
+        --fw-bold: 700;
+      }
+
+      html {
+        font-size: 100%;
+        font-family: "Raleway", sans-serif;
+        box-sizing: border-box;
+      }
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+
+      img {
+        vertical-align: middle;
+      }
+
+      h1 {
+        display: none;
+        width: 0;
+        height: 0;
+      }
+
+      span {
+        font-weight: var(--fw-bold);
+      }
+
+      body {
+        min-height: 100vh;
+        /* width: 100%; */
+        background: no-repeat url("images/bg-mobile.png") center/cover
+          var(--very-dark-blue);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        width: 85%;
+        color: var(--pale-blue);
+        font-size: 14px;
+        margin-bottom: 4rem;
+      }
+
+      section {
+        min-width: 252px;
+        background-color: var(--dark-blue);
+      }
+
+      section + section {
+        margin-top: 1rem;
+      }
+
+      .control-sec {
+        padding: 2.5rem;
+        border-radius: var(--border-radius) 100px var(--border-radius)
+          var(--border-radius);
+      }
+
+      .logo {
+        margin-bottom: 2rem;
+      }
+
+      .control-group {
+        display: flex;
+        gap: 0.8rem;
+      }
+
+      .control-group a {
+        display: inline-block;
+        min-width: 50px;
+        min-height: 50px;
+        background-color: var(--very-dark-blue);
+        text-align: center;
+        line-height: 50px;
+        border-radius: var(--border-radius);
+      }
+
+      .storage-sec {
+        text-align: center;
+        border-radius: var(--border-radius);
+        padding: 2rem 2.5rem 3rem;
+        position: relative;
+      }
+
+      .capacity {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .capa-left {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        padding: 0.7rem 1.3rem;
+        border-radius: var(--border-radius);
+        background-color: white;
+        color: var(--grayish-blue);
+        font-size: 10px;
+        text-transform: uppercase;
+        font-weight: var(--fw-bold);
+      }
+
+      .capa-left span {
+        font-size: 30px;
+        margin-right: 0.2rem;
+        color: var(--very-dark-blue);
+      }
+
+      .bar {
+        background-color: var(--very-dark-blue);
+        margin-block: 1rem;
+        height: 1.2rem;
+        border-radius: var(--border-radius);
+        position: relative;
+      }
+
+      .bar:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0.05rem;
+        width: 75%;
+        height: calc(1.2rem - 0.3rem);
+        transform: translateY(-50%) translateX(0.15rem);
+        background: linear-gradient(
+          to right,
+          hsl(6, 100%, 80%),
+          hsl(335, 100%, 65%)
+        );
+        border-radius: var(--border-radius);
+      }
+
+      .bar:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 75%;
+        width: 0.6rem;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: white;
+        transform: translateX(-100%) translateY(-50%);
+        /* transform: translateX(-100%) translateY(-50%); */
+      }
+      @media screen and (max-width: 375px) {
+        .capa-left {
+          left: 50%;
+          bottom: 0;
+          transform: translateX(-50%) translateY(50%);
+        }
+      }
+
+      @media screen and (min-width: 376px) {
+        body {
+          background: no-repeat url("images/bg-desktop.png") left bottom,
+            var(--very-dark-blue);
+        }
+
+        .container {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          gap: 2rem;
+          max-width: 960px;
+          padding-inline: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .control-sec {
+          min-width: 260px;
+          width: 40%;
+        }
+
+        .storage-sec {
+          min-width: 438px;
+          text-align: left;
+          width: 60%;
+          padding: 2rem;
+        }
+
+        .capa-left {
+          top: 0;
+          right: 2rem;
+          transform: translateY(-60%);
+          border-end-end-radius: 0;
+        }
+
+        .capa-left:after {
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          transform: translateY(95%);
+          width: 1rem;
+          aspect-ratio: 1;
+          border-top: 0.6rem solid white;
+          border-right: 0.6rem solid white;
+          border-left: 0.6rem solid transparent;
+          border-bottom: 0.6rem solid transparent;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="sr-only">fylo data storage component</h1>
+    <main class="container">
+      <section class="control-sec">
+        <div class="logo-group">
+          <img src="/images/logo.svg" alt="" class="logo" />
+        </div>
+        <div class="control-group">
+          <a href="#"><img src="/images/icon-document.svg" alt="" /></a>
+          <a href="#"><img src="/images/icon-folder.svg" alt="" /></a>
+          <a href="#"><img src="/images/icon-upload.svg" alt="" /></a>
+        </div>
+      </section>
+      <section class="storage-sec">
+        <p class="capa-state">
+          You’ve used <span>815 GB</span> of your storage
+        </p>
+        <div class="bar"></div>
+        <p class="capa-left"><span>185</span>GB Left</p>
+        <p class="capacity"><span>0 GB</span><span>1000 GB</span></p>
+      </section>
+    </main>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Joe Jai</a>.
+    </div>
+  </body>
+</html>
